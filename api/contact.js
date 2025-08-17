@@ -31,7 +31,7 @@ export default async (req, res) => {
       "https://challenges.cloudflare.com/turnstile/v0/siteverify",
       {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlenccoded" },
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({
           secret: process.env.TURNSTILE_SECRET_KEY,
           response: data["cf-turnstile-response"],
