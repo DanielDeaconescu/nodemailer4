@@ -41,7 +41,11 @@ const form = document.getElementById("nodemailerForm");
 
 const showSpinner = (show) => {
   const loadingSpinner = document.querySelector(".spinner-border");
-  show && loadingSpinner.classList.remove("d-none");
+  if (show) {
+    loadingSpinner.classList.remove("d-none");
+  } else {
+    loadingSpinner.classList.add("d-none");
+  }
 };
 
 form.addEventListener("submit", async (e) => {
