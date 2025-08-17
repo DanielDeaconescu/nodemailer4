@@ -11,28 +11,55 @@
       defer
     ></script>
     <link rel="stylesheet" href="style.css" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
-    <form id="nodemailerForm">
-      <div>
-        <input type="text" name="name" placeholder="Full name" />
-      </div>
-      <div>
-        <input type="email" name="email" placeholder="Email" />
-      </div>
-      <div>
-        <textarea name="message" placeholder="Message..."></textarea>
-      </div>
-      <div>
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAABr_bBNcVT21K8Bw"></div>
-      </div>
-      <div>
-        <button type="submit">Submit</button>
-      </div>
-    </form>
+    <div class="form-container">
+      <form id="nodemailerForm">
+        <div class="mb-3">
+          <label for="name" class="form-label">Full Name</label>
+          <input type="text" name="name" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" name="email" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Message</label>
+          <textarea
+            name="message"
+            placeholder="Message..."
+            class="form-control"
+          ></textarea>
+        </div>
+        <div class="mb-3">
+          <div
+            class="cf-turnstile"
+            data-sitekey="0x4AAAAAABr_bBNcVT21K8Bw"
+          ></div>
+        </div>
+        <div class="mb-3">
+          <button class="btn btn-primary w-100" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
 
     <div id="toast" class="toast-hidden">Hello</div>
 
     <script src="script.js"></script>
+
+    <!-- Bootstrap JavaScript -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

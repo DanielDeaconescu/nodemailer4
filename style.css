@@ -24,3 +24,13 @@
 .toast-error {
   background-color: red;
 }
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#nodemailerForm {
+  padding: 2rem;
+}
