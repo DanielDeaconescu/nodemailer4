@@ -57,7 +57,7 @@ export default async (req, res) => {
       connectionTimeout: 5000,
     });
 
-    transporter.sendMail({
+    await transporter.sendMail({
       from: `Nodemailer4 form <${process.env.SMTP_USER}>`,
       to: process.env.RECIPIENT_EMAIL,
       subject: `New Message from ${data.name}`,
