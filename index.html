@@ -3,7 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Gathering data & sending it with Nodemailer</title>
+    <!-- Turnstile script -->
+    <script
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+      async
+      defer
+    ></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body></body>
+  <body>
+    <form id="nodemailerForm">
+      <div>
+        <input type="text" name="name" placeholder="Full name" />
+      </div>
+      <div>
+        <input type="email" name="email" placeholder="Email" />
+      </div>
+      <div>
+        <textarea name="message" placeholder="Message..."></textarea>
+      </div>
+      <div>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAABr_bBNcVT21K8Bw"></div>
+      </div>
+      <div>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+
+    <div id="toast" class="toast-hidden">Hello</div>
+
+    <script src="script.js"></script>
+  </body>
 </html>
