@@ -39,11 +39,15 @@ const formValidation = (form) => {
 // Form submission
 const form = document.getElementById("nodemailerForm");
 
+const showSpinner = (show) => {
+  const loadingSpinner = document.querySelector(".spinner-border");
+  show && loadingSpinner.classList.remove("d-none");
+};
+
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const form = e.target;
-  const loadingGif = document.querySelector(".spinner-border");
-  loadingGif.classList.remove("d-none");
+  showSpinner(true);
 
   // Verify the Turnstile token
   const turnstileToken = document.querySelector(
@@ -59,7 +63,7 @@ form.addEventListener("submit", async (e) => {
   const errors = formValidation(form);
   if (errors.length > 0) {
     showToast(errors.join(", "), true);
-    loadingGif.classList.add("d-none");
+    showSpinner(false);
     return;
   }
 
@@ -86,13 +90,13 @@ form.addEventListener("submit", async (e) => {
 
     showToast("Your message was sent successfully!");
     form.reset();
-    loadingGif.classList.add("d-none");
+    showSpinner(false);
     setTimeout(() => {
       window.location.href = "/thank-you.html";
     }, 1500);
   } catch (error) {
     console.error("Sending error", error);
     showToast(error.message || "Failed to send email", true);
-    loadingGif.classList.add("d-none");
+    showSpinner(false);
   }
 });
