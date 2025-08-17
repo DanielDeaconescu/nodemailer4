@@ -86,6 +86,7 @@ form.addEventListener("submit", async (e) => {
 
     showToast("Your message was sent successfully!");
     form.reset();
+    loadingGif.classList.add("d-none");
     setTimeout(() => {
       window.location.href = "/thank-you.html";
     }, 1500);
