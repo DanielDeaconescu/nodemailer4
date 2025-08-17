@@ -16,8 +16,45 @@ export default async (req, res) => {
       req.on("error", reject);
     });
 
-    console.log(data);
     // Validate
-    // if () {}
-  } catch (error) {}
+    if (
+      !data.name ||
+      !data.email ||
+      !data.message ||
+      !data["cf-turnstile-response"]
+    ) {
+      res.status(400).json({ error: "All fields are required!" });
+    }
+
+    // Verify the Turnstile
+    const responseToken = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlenccoded" },
+        body: new URLSearchParams({
+          secret: process.env.TURNSTILE_SECRET_KEY,
+          response: data["cf-turnstile-response"],
+        }),
+      }
+    ).then((res) => res.json());
+
+    if (!responseToken.success) {
+      return res
+        .status(400)
+        .json({ error: "Please complete the CAPTCHA verification!" });
+    }
+
+    // Send the email
+    const transporter = nodemailer.createTransport({});
+
+    transporter.sendMail({});
+
+    res
+      .status(200)
+      .json({ success: true, message: "Message sent successfully!" });
+  } catch (error) {
+    console.error("Server error: ", error);
+    res.status(500).json({ error: error.message || "Internal server error" });
+  }
 };
