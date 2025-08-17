@@ -46,9 +46,23 @@ export default async (req, res) => {
     }
 
     // Send the email
-    const transporter = nodemailer.createTransport({});
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: 465,
+      secure: true,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+      connectionTimeout: 5000,
+    });
 
-    transporter.sendMail({});
+    transporter.sendMail({
+      from: `Nodemailer4 form <${process.env.SMTP_USER}>`,
+      to: process.env.RECIPIENT_EMAIL,
+      subject: `New Message from ${data.name}`,
+      text: `Name: ${data.name}\nEmail: ${data.email}\nMessage: ${data.message}`,
+    });
 
     res
       .status(200)
