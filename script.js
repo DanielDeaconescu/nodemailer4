@@ -42,7 +42,7 @@ const form = document.getElementById("nodemailerForm");
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const form = e.target;
-  const loadingGif = document.querySelector(".loading-gif");
+  const loadingGif = document.querySelector(".spinner-border");
   loadingGif.classList.remove("d-none");
 
   // Verify the Turnstile token
